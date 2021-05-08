@@ -1,0 +1,20 @@
+{
+    "name": "rbarden/noaa-php-wrappers",
+    "description": "A PHP wrapper around various NOAA APIs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Reid Barden",
+            "email": "me@reidbarden.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rbarden\\Noaa\\": "src"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
