@@ -17,6 +17,9 @@ use Rbarden\Noaa\TaC\Enums\Timezone;
 use Rbarden\Noaa\TaC\Enums\Units;
 use Rbarden\Noaa\TaC\Enums\VelocityType;
 
+/**
+ *  The CO-OPS API for data retrieval can be used to retrieve observations and predictions from CO-OPS stations.
+ */
 class Data
 {
     private ResponseInterface $response;
@@ -50,6 +53,11 @@ class Data
     ) {
     }
 
+    /**
+     * Execute the query and return the response
+     *
+     * This does save the response for use later if needed.
+     */
     public function execute(): ResponseInterface
     {
         $client = new Client(
@@ -69,6 +77,9 @@ class Data
         return $this->response;
     }
 
+    /**
+     * Returns the array used for the query parameters in the request, including nulls
+     */
     public function getQueries(): array
     {
         return [
@@ -88,11 +99,19 @@ class Data
         ];
     }
 
+    /**
+     * Returns the saved response generated from execute
+     */
     public function getResponse(): ResponseInterface
     {
         return $this->response;
     }
 
+    /**
+     * To set the station id
+     *
+     * A 7 character station ID, or a currents station ID
+     */
     public function station(string $stationID): self
     {
         $this->station = $stationID;
@@ -100,6 +119,13 @@ class Data
         return $this;
     }
 
+    /**
+     * To set the date parameter
+     *
+     * This sets the begin and end dates to null.
+     *
+     * @see Date for input
+     */
     public function date(string $date): self
     {
         if (Date::has($date)) {
@@ -114,6 +140,11 @@ class Data
         throw new Exception('Incompatible date string given');
     }
 
+    /**
+     * To set the begin_date and end_date parameters
+     *
+     * This sets the date parameter to null.
+     */
     public function rangeFromDates(DateTimeInterface $start, DateTimeInterface $end): self
     {
         $this->date = null;
@@ -124,6 +155,11 @@ class Data
         return $this;
     }
 
+    /**
+     * To set the product parameter
+     *
+     * @see Product for input
+     */
     public function product(string $product): self
     {
         if (Product::has($product)) {
@@ -135,6 +171,11 @@ class Data
         throw new Exception('Incompatible product string given');
     }
 
+    /**
+     * To set the datum parameter
+     *
+     * @see Datum for input
+     */
     public function datum(string $datum): self
     {
         if (Datum::has($datum)) {
@@ -146,7 +187,12 @@ class Data
         throw new Exception('Incompatible datum string given');
     }
 
-    public function velocityType(string $velocity): self
+    /**
+     * To set the vel_type parameter
+     *
+     * @see VelocityType for input
+     */
+    public function vel_type(string $velocity): self
     {
         if (VelocityType::has($velocity)) {
             $this->velocity = $velocity;
@@ -157,6 +203,11 @@ class Data
         throw new Exception('Incompatible velocity string given');
     }
 
+    /**
+     * To set the units parameter
+     *
+     * @see Units for input
+     */
     public function units(string $units): self
     {
         if (Units::has($units)) {
@@ -168,7 +219,12 @@ class Data
         throw new Exception('Incompatible units string given');
     }
 
-    public function timezone(string $timezone): self
+    /**
+     * To set the time_zone parameter
+     *
+     * @see Timezone for input
+     */
+    public function time_zone(string $timezone): self
     {
         if (Timezone::has($timezone)) {
             $this->timezone = $timezone;
@@ -179,6 +235,11 @@ class Data
         throw new Exception('Incompatible timezone string given');
     }
 
+    /**
+     * To set the format parameter
+     *
+     * @see Format for input
+     */
     public function format(string $format): self
     {
         if (Format::has($format)) {
@@ -190,6 +251,11 @@ class Data
         throw new Exception('Incompatible format string given');
     }
 
+    /**
+     * To set the interval parameter
+     *
+     * @see Interval for input
+     */
     public function interval(string $interval): self
     {
         if (Interval::has($interval)) {
@@ -201,6 +267,12 @@ class Data
         throw new Exception('Incompatible interval string given');
     }
 
+    /**
+     * To set the bin number
+     *
+     * The bin number for the specified currents station
+     * Note: If a bin is not specified for a PORTS station, the data is returned using a predefined real-time bin.
+     */
     public function bin(int $bin): self
     {
         $this->bin = $bin;
@@ -208,6 +280,13 @@ class Data
         return $this;
     }
 
+    /**
+     * To set the name of the application
+     *
+     * External users, please provide the name of your company or your name.
+     * Internal CO-OPS users, please include the name of the application.
+     * This parameter is used for helping to fix any possible usage issues.
+     */
     public function application(string $application): self
     {
         $this->application = $application;
