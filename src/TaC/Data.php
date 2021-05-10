@@ -19,6 +19,8 @@ use Rbarden\Noaa\TaC\Enums\VelocityType;
 
 /**
  *  The CO-OPS API for data retrieval can be used to retrieve observations and predictions from CO-OPS stations.
+ *
+ * @link https://api.tidesandcurrents.noaa.gov/api/prod/
  */
 class Data
 {
