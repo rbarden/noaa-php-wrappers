@@ -14,9 +14,14 @@ abstract class Enum
         return in_array(
             $value,
             array_values(
-                (new ReflectionClass(static::class))->getConstants(ReflectionClassConstant::IS_PUBLIC)
+                static::list()
             ),
             true
         );
+    }
+
+    public static function list(): array
+    {
+        return (new ReflectionClass(static::class))->getConstants(ReflectionClassConstant::IS_PUBLIC);
     }
 }
