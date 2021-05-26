@@ -14,7 +14,7 @@ abstract class Enum
         return in_array(
             $value,
             array_values(
-                static::list()
+                static::values()
             ),
             true
         );
