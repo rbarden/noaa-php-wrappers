@@ -101,6 +101,15 @@ class Data
         ];
     }
 
+    public function setQueries(array $queries): self
+    {
+        foreach ($queries as $key => $value) {
+            $this->{$key}($value);
+        }
+
+        return $this;
+    }
+
     /**
      * Returns the saved response generated from execute
      */
