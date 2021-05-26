@@ -20,7 +20,7 @@ abstract class Enum
         );
     }
 
-    public static function list(): array
+    public static function values(): array
     {
         return (new ReflectionClass(static::class))->getConstants(ReflectionClassConstant::IS_PUBLIC);
     }
