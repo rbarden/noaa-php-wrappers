@@ -110,6 +110,71 @@ class Data
         return $this;
     }
 
+    public function getStation(): ?string
+    {
+        return $this->station ?? null;
+    }
+
+    public function getBeginDate(): ?DateTimeInterface
+    {
+        return $this->beginDate ?? null;
+    }
+
+    public function getEndDate(): ?DateTimeInterface
+    {
+        return $this->endDate ?? null;
+    }
+
+    public function getDate(): ?string
+    {
+        return $this->date ?? null;
+    }
+
+    public function getProduct(): ?string
+    {
+        return $this->product ?? null;
+    }
+
+    public function getDatum(): ?string
+    {
+        return $this->datum ?? null;
+    }
+
+    public function getVelocity(): ?string
+    {
+        return $this->velocity ?? null;
+    }
+
+    public function getUnits(): ?string
+    {
+        return $this->units ?? null;
+    }
+
+    public function getTimezone(): ?string
+    {
+        return $this->timezone ?? null;
+    }
+
+    public function getFormat(): ?string
+    {
+        return $this->format ?? null;
+    }
+
+    public function getInterval(): ?string
+    {
+        return $this->interval ?? null;
+    }
+
+    public function getBin(): ?int
+    {
+        return $this->bin ?? null;
+    }
+
+    public function getApplication(): ?string
+    {
+        return $this->application ?? null;
+    }
+
     /**
      * Returns the saved response generated from execute
      */
