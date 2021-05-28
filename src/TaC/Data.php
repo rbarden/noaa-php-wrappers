@@ -52,6 +52,7 @@ class Data
 
     public function __construct(
         private string $baseUri = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter',
+        private bool $throwOnError = false,
     ) {
     }
 
@@ -65,6 +66,7 @@ class Data
         $client = new Client(
             [
                 'base_uri' => $this->baseUri,
+                'http_errors' => $this->throwOnError,
             ]
         );
 

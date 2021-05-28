@@ -39,6 +39,10 @@ class Response
     {
         $response = json_decode($data->getResponse()->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
 
+        if (isset($response['error'])) {
+            throw new \Exception($response['error']['message'] ?? 'Response Error');
+        }
+
         if (in_array($data->getProduct(), [Product::DATUMS, Product::PREDICTIONS], true)) {
             $response['data'] = $response[$data->getProduct()];
         }
